@@ -12,4 +12,9 @@
     tools:context="com.powellapps.bancodedados.ListaActivity"
     tools:showIn="@layout/activity_lista">
 
+    <ListView
+        android:id="@+id/list_itens"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></ListView>
+
 </RelativeLayout>
