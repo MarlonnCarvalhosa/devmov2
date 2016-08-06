@@ -11,10 +11,12 @@ public class Banda {
     private Integer id;
     private String nome;
     private String genero;
+    private String ano;
 
     public Banda(Cursor cursorComBandas) {
+        String nome = cursorComBandas.getString(cursorComBandas.getColumnIndex("NOME"));
         setId(cursorComBandas.getInt(cursorComBandas.getColumnIndex("ID")));
-        setNome(cursorComBandas.getString(cursorComBandas.getColumnIndex("NOME")));
+        setNome(nome);
         setGenero(cursorComBandas.getString(cursorComBandas.getColumnIndex("GENERO")));
     }
 
@@ -53,5 +55,13 @@ public class Banda {
         values.put("NOME", nome);
         values.put("GENERO", genero);
         return values;
+    }
+
+    public String getAno() {
+        return ano;
+    }
+
+    public void setAno(String ano) {
+        this.ano = ano;
     }
 }

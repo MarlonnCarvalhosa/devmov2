@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 //A classe SQLiteOpenHelper que realiza toda magia
 public class BancoDeDados extends SQLiteOpenHelper {
+    private static final String TABELA_BANDA = "BANDA";
 
     //Construtor com context, nome do banco de dados, factory que pode ser null e a versão do banco
     public BancoDeDados(Context context) {
@@ -24,13 +25,26 @@ public class BancoDeDados extends SQLiteOpenHelper {
 
     public void salva(Banda banda) {
         //Método para inserir
-        getWritableDatabase().insert("BANDA", null, banda.getValues());
+        if(existe()){
+            atualiza();
+        }else{
+            getWritableDatabase().insert(TABELA_BANDA, null, banda.getValues());
+        }
+
+    }
+
+    private boolean existe() {
+        return false;
+    }
+
+    private void atualiza() {
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         //Comando sql para criacao de uma tabela. Não é indicado usar os nomes sem uma constante, mas usaremos aqui para ficar mais simples
-        db.execSQL("CREATE TABLE BANDA (ID INTEGER PRIMARY KEY AUTOINCREMENT, NOME TEXT, GENERO TEXT)");
+        db.execSQL("CREATE TABLE " + TABELA_BANDA +
+                " (ID INTEGER PRIMARY KEY AUTOINCREMENT, NOME TEXT, GENERO TEXT)");
     }
 
     @Override
@@ -39,7 +53,11 @@ public class BancoDeDados extends SQLiteOpenHelper {
     }
 
     public ArrayList<Banda> getBandas() {
+
+        //Criar um array
         ArrayList<Banda> bandas = new ArrayList<>();
+
+        //Retorno um cursor
         Cursor cursorComBandas = getReadableDatabase().query("BANDA",null,null,null,null,null,null);
         while (cursorComBandas.moveToNext()){
             bandas.add(new Banda(cursorComBandas));

@@ -3,13 +3,11 @@ package com.powellapps.bancodedados;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.powellapps.bancodedados.adapter.BandaAdapter;
 import com.powellapps.bancodedados.bancodedados.BancoDeDados;
@@ -50,7 +48,20 @@ public class ListaActivity extends AppCompatActivity {
         //Referenciando com xml content_list
         listViewBandas = (ListView) findViewById(R.id.list_itens);
         //Inicia o adapter com o contexto e a lista de itens
-        bandaAdapter = new BandaAdapter(this, new ArrayList<Banda>());
+
+
+        //Simulacao da lista
+        ArrayList<Banda> bandas = new ArrayList<>();
+        Banda banda1 = new Banda();
+        banda1.setNome("Calipso");
+        banda1.setGenero("Tecnomelody");
+
+        Banda banda2 = new Banda();
+        banda2.setNome("Beatles");
+        banda2.setGenero("Pop");
+        bandas.add(banda2);
+        bandas.add(banda1);
+        bandaAdapter = new BandaAdapter(ListaActivity.this, bandas);
         //Atribui o adapter a lista dessa tela
         listViewBandas.setAdapter(bandaAdapter);
 

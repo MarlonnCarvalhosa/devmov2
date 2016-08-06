@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.powellapps.bancodedados.bancodedados.BancoDeDados;
 import com.powellapps.bancodedados.model.Banda;
@@ -26,6 +27,18 @@ public class NovoActivity extends AppCompatActivity {
         buttonSalvar = (Button) findViewById(R.id.button_salvar);
 
 
+        buttonSalvar.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                //Toast é uma mensagem temporaria
+         //       Toast.makeText(getApplicationContext(),"Guedes gosta de leite", Toast.LENGTH_LONG).show();
+                //AlertDialog pode colocar botoes
+                //PopupMenu
+                //Dialog
+
+                return true;
+            }
+        });
         //Implementa o click do botao salvar
         buttonSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
