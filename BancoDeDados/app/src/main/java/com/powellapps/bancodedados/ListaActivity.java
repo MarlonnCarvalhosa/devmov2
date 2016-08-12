@@ -6,8 +6,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Button;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.powellapps.bancodedados.adapter.BandaAdapter;
 import com.powellapps.bancodedados.bancodedados.BancoDeDados;
@@ -51,7 +52,7 @@ public class ListaActivity extends AppCompatActivity {
 
 
         //Simulacao da lista
-        ArrayList<Banda> bandas = new ArrayList<>();
+        final ArrayList<Banda> bandas = new ArrayList<>();
         Banda banda1 = new Banda();
         banda1.setNome("Calipso");
         banda1.setGenero("Tecnomelody");
@@ -65,6 +66,18 @@ public class ListaActivity extends AppCompatActivity {
         //Atribui o adapter a lista dessa tela
         listViewBandas.setAdapter(bandaAdapter);
 
+        //Liberar o click do adapter
+        listViewBandas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                //Recupera a banda clicada da lista
+                Banda minhaBandaPreferida = bandas.get(position);
+                //Mostra uma mensagem na tela
+                Toast.makeText(getApplicationContext(), "Minha banda preferida é: " +
+                        minhaBandaPreferida.getNome(), Toast.LENGTH_LONG).show();
+            }
+        });
 
     }
 
