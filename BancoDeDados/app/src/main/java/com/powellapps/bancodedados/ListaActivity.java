@@ -30,6 +30,7 @@ public class ListaActivity extends AppCompatActivity {
         //Toolbar é a barra que fica no alto da tela dos aplicativos. Neste momento não será utilizada para nada!
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Bandas");
 
         //Botão flutuante que aparece na maioria dos aplicativos novos.
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
