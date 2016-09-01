@@ -9,6 +9,7 @@ public class Musica extends SugarRecord {
 
     String nome;
     String banda;
+    String estilo;
 
     public Musica() {}
 
