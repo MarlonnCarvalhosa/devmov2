@@ -60,12 +60,15 @@ public class MainActivity extends AppCompatActivity {
         Integer numero;
         private BigInteger resultado;
 
+        //Este método executa antes de tudo, pode ser usado para mostrar um ProgressDialog ou pegar dados da tela
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
             numero = Integer.valueOf(editTextNumero.getText().toString());
         }
 
+
+        //Este método faz a operação assíncrona
         @Override
         protected Void doInBackground(Void... params) {
             resultado = fibonacci(numero);
@@ -73,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
 
+        //Este método tem acesso a UIThread, e pode ser usado para mostrar o resultado da operação.
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
