@@ -1,5 +1,6 @@
 package powellapps.com.asynctask;
 
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText editTextNumero;
     private Button buttonCalcular;
     private Button buttonCalcularCerto;
+    private ProgressDialog progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
                 new AsyncCalculo().execute();
             }
         });
+
+        progress = new ProgressDialog(this);
     }
 
     //Método que irá demorar. Poderia ser uma conexão com banco de dados, acesso a um web service, etc
@@ -59,12 +63,15 @@ public class MainActivity extends AppCompatActivity {
 
         Integer numero;
         private BigInteger resultado;
-
         //Este método executa antes de tudo, pode ser usado para mostrar um ProgressDialog ou pegar dados da tela
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
             numero = Integer.valueOf(editTextNumero.getText().toString());
+
+            progress.setMessage("Calculado fibonacci");
+            progress.setCancelable(false);
+            progress.show();
         }
 
 
@@ -81,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             textViewResultado.setText("Resultado = " + resultado.toString());
+            progress.dismiss();
         }
 
     }
