@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">RecyclerView</string>
+
+    <string-array name="produtos">
+        <item>Macarrao</item>
+        <item>Feijão</item>
+        <item>Arroz</item>
+    </string-array>
 </resources>

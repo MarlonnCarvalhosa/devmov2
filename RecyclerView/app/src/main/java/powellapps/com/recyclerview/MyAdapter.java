@@ -1,10 +1,12 @@
 package powellapps.com.recyclerview;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -13,9 +15,11 @@ import java.util.ArrayList;
  */
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CursoViewHolder> {
     private ArrayList<Curso> cursos;
+    private Context context;
 
-    public MyAdapter(ArrayList<Curso> cursos) {
+    public MyAdapter(ArrayList<Curso> cursos, Context context) {
         this.cursos = cursos;
+        this.context = context;
     }
 
     @Override
@@ -27,11 +31,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CursoViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(CursoViewHolder holder, int position) {
+    public void onBindViewHolder(CursoViewHolder holder, final int position) {
         //Método obrigatório, atribui cada objeto da lista ao viewholder
-        Curso curso = cursos.get(position);
+        final Curso curso = cursos.get(position);
         holder.textViewValor.setText(curso.getValor());
         holder.textViewNome.setText(curso.getNome());
+        holder.textViewCursar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "Giovani 'é gazela " + position + curso.getNome(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override
@@ -44,11 +54,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CursoViewHolder> {
 
     private TextView textViewNome;
     private TextView textViewValor;
+        private TextView textViewCursar;
 
         public CursoViewHolder(View itemView) {
             super(itemView);
             textViewNome = (TextView) itemView.findViewById(R.id.text_nome);
             textViewValor = (TextView) itemView.findViewById(R.id.text_valor);
+            textViewCursar = (TextView) itemView.findViewById(R.id.text_cursar);
         }
     }
 }

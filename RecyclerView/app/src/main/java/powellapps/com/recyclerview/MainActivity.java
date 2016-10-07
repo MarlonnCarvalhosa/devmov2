@@ -2,6 +2,7 @@ package powellapps.com.recyclerview;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
         criaCursosParaDemonstracao();
         //Cria o adapter
-        mAdapter = new MyAdapter(cursos);
+        mAdapter = new MyAdapter(cursos, getApplicationContext());
         mRecyclerView.setAdapter(mAdapter);
     }
 
@@ -47,6 +48,14 @@ public class MainActivity extends AppCompatActivity {
         Curso direito = new Curso();
         direito.setNome("Direito");
         direito.setValor("R$ 1000,00");
+        cursos.add(sistemas);
+        cursos.add(direito);
+        cursos.add(biologia);
+        cursos.add(civil);
+        cursos.add(sistemas);
+        cursos.add(direito);
+        cursos.add(biologia);
+        cursos.add(civil);
         cursos.add(sistemas);
         cursos.add(direito);
         cursos.add(biologia);
