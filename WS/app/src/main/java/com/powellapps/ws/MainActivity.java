@@ -1,10 +1,9 @@
 package com.powellapps.ws;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -21,9 +20,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Endereco> call, Response<Endereco> response) {
                 Endereco endereco = response.body();
-                Log.v("", "Teste " + endereco.getUf());
                 textViewEndereco.setText("Endereço " + endereco);
-                Toast.makeText(getApplicationContext(), "Vamos lá " + response.body().getBairro(), Toast.LENGTH_LONG).show();
             }
 
             @Override
