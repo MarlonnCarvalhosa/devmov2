@@ -49,8 +49,8 @@ public class MusicosActivity extends AppCompatActivity {
         listViewMusicos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Musico musico = new Musico();
-                Toast.makeText(getApplicationContext(),"Certinho " + musico.getNome() + " com id banda" + musico.getIdBanda(), Toast.LENGTH_LONG);
+                Musico musico = musicos.get(position);
+                Toast.makeText(getApplicationContext(),"Certinho " + musico.getNome() + " com id banda" + musico.getIdBanda(), Toast.LENGTH_LONG).show();
             }
         });
     }
