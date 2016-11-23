@@ -16,19 +16,12 @@ public class SetupService {
 
     private static String API_URL = "https://viacep.com.br/ws/";
 
-    public static void main(String... args) throws IOException {
-        // Create a very simple REST adapter which points the GitHub API.
-
-
-    }
-
     public static EnderecoREST get() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(API_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        // Create an instance of our GitHub API interface.
         EnderecoREST rest = retrofit.create(EnderecoREST.class);
         return rest;
     }
